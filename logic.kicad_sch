@@ -8,6 +8,7 @@
 		(title "KINK-box")
 		(date "2026-05-19")
 		(rev "V0.1.0")
+		(company "NURDspace")
 		(comment 1 "RvL")
 		(comment 2 "Schematic based on the Amped ESP32 by Sonocotta")
 	)

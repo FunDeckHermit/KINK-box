@@ -5,10 +5,10 @@
 	(uuid "1b1d42dc-f63c-49d9-9b61-b09c30b6ea01")
 	(paper "A5")
 	(title_block
-		(title "DanioVision Observation Chamber Upper Compute PCB")
-		(date "2024-04-11")
-		(rev "V2.0.0")
-		(company "Noldus Information Technology BV")
+		(title "KINK-box")
+		(date "2026-05-19")
+		(rev "V1.0")
+		(company "NURDspace")
 		(comment 1 "RvL")
 	)
 	(lib_symbols
