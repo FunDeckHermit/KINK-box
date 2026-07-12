@@ -14,13 +14,16 @@ KINK-box is a dedicated streaming device combining an ESP32-S3 processor with au
 - **Web Interface**: Control playback and stream selection from your browser
 - **Built-in Amplifier**: Direct speaker connection
 - **KINK Radio Optimized**: Seamless streaming of KINK stations
+- **12V USB Power Delivery**: Powers device via standard USB PD adapter
+- **Menu Button Controls**: Adjust volume directly from physical buttons
 
 ## Quick Start
 
 1. **Assembly**: Reference the component placement guide and [Bill of Materials](kicad-artifacts/KINK-box_bom.csv)
-2. **Power On**: Connect to WiFi
+2. **Power On**: Connect 12V USB Power Delivery adapter and connect to WiFi
 3. **Access**: Open `http://<device-ip>` in your browser
-4. **Enjoy**: Select KINK channels and adjust volume
+4. **Volume Control**: Use the menu buttons to adjust volume or control from the web interface
+5. **Enjoy**: Select KINK channels and stream
 
 ## Hardware Files
 
