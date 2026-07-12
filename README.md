@@ -1,5 +1,7 @@
 # KINK-box
 
+![KINK-box Isometric Render](kicad-artifacts/KINK-box_render-iso.png)
+
 A web-based radio player for KINK streams, powered by an ESP32-S3 microcontroller with integrated audio amplification.
 
 ## Overview
