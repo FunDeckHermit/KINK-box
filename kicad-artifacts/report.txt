@@ -1,0 +1,45 @@
+KiCad Export Report
+===================
+
+Project: KINK-box
+Run at: 2026-07-12 13:20:13
+Duration: 31s
+KiCad Type: Flatpak
+
+Render settings:
+  Quality: high
+  Resolution: 1400x1400
+  Isometric rotation: 315,0,45
+
+Gerber layers:
+  F.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.SilkS,B.SilkS,Edge.Cuts
+
+Drill:
+  Format: Excellon
+  Map: PDF
+
+Placement:
+  Format: CSV
+  Units: mm
+  Side: both
+
+Interactive BOM:
+  Fields: Value, Footprint, MF, MPN
+  Grouped by: Value, Footprint
+  DNP filtering: Enabled (kicad_dnp field)
+  Layout: left-right
+  Layer view: Front
+
+Generated files:
+build.log
+drill
+ibom.html
+KINK-box_board.step
+KINK-box_bom.csv
+KINK-box_gerbers.zip
+KINK-box_pcb.pdf
+KINK-box_placement.csv
+KINK-box_render-bottom.png
+KINK-box_render-iso.png
+KINK-box_render-top.png
+KINK-box_schematic.pdf

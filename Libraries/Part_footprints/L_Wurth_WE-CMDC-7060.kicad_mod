@@ -1,0 +1,236 @@
+(footprint "L_Wurth_WE-CMDC-7060"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Common Mode Data Line Filter, body 7x6x3.5mm, https://www.we-online.com/en/components/products/WE-CMDC#/articles/WE-CMDC-7060")
+	(tags "SMT")
+	(property "Reference" "REF**"
+		(at 0 -4.25 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "99ebf599-5fe5-4924-8103-b56c046a858a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "L_Wurth_WE-CMDC-7060"
+		(at 0 4.25 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e007572b-31cc-46bb-b9e7-b2589bf69e78")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f225841d-5267-498a-96c5-00cdc114ddb0")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2a5ac5f2-9a1c-4c24-87e6-2b1437bc1143")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.61 0)
+		(end -3.61 0.39)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1c955c7a-bba4-4481-acdd-e32d9daebe2b")
+	)
+	(fp_line
+		(start -3.61 3.11)
+		(end -3.61 2.61)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "587bbacc-f7be-4e67-8e53-03270885fc0a")
+	)
+	(fp_line
+		(start -3.61 3.11)
+		(end 3.61 3.11)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "93a9fb8c-270a-4639-969d-25ae5b4fdbd2")
+	)
+	(fp_line
+		(start 0 -3.11)
+		(end 3.61 -3.11)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "936ca79a-9a2a-48d3-985f-83cd484eaec0")
+	)
+	(fp_line
+		(start 3.61 -3.11)
+		(end 3.61 -2.61)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0eebb063-42dc-41b9-b952-1adee3d20342")
+	)
+	(fp_line
+		(start 3.61 -0.39)
+		(end 3.61 0.39)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7460f058-53b9-41b6-ad6d-b8dbda7957c8")
+	)
+	(fp_line
+		(start 3.61 3.11)
+		(end 3.61 2.61)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "dc78314f-5d65-40b1-a94f-dcaf9fc9e1be")
+	)
+	(fp_rect
+		(start -4.75 -3.25)
+		(end 4.75 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "3952cbf9-831b-4e6b-8e3d-8e30441b59a9")
+	)
+	(fp_line
+		(start -3.5 -1.5)
+		(end -3.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "bf317aeb-77c4-4b5a-883e-3f26397d3d6b")
+	)
+	(fp_line
+		(start -3.5 3)
+		(end 3.5 3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1b8d5e16-eaa5-40d7-930c-bcfef8133def")
+	)
+	(fp_line
+		(start -2 -3)
+		(end -3.5 -1.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "8e6a0949-6930-42da-bf7a-7ba673f0aecd")
+	)
+	(fp_line
+		(start 3.5 -3)
+		(end -2 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e96bbb42-5d05-4fec-8984-4efe5c1a505c")
+	)
+	(fp_line
+		(start 3.5 3)
+		(end 3.5 -3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9dbfdbf6-73d7-4842-8c4d-0bf1c8148ecc")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "514081b6-184a-4202-bcdd-cb7d71ba0815")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.075)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -3.25 -1.5)
+		(size 2.5 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "38d9342b-14f5-4094-bd0d-23643311bc09")
+	)
+	(pad "2" smd rect
+		(at 3.25 -1.5)
+		(size 2.5 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "372443f6-57e9-41b4-97dc-c99eed0a0c11")
+	)
+	(pad "3" smd rect
+		(at -3.25 1.5)
+		(size 2.5 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ce8f0b92-54ae-47d2-9a0c-1eb3fdc28887")
+	)
+	(pad "4" smd rect
+		(at 3.25 1.5)
+		(size 2.5 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d535c1c5-688c-4438-bf51-ff243c5fcd0a")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Libraries/Part_3D_models/L_Wurth_WE-CMDC-7060.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

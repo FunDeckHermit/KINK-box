@@ -1,0 +1,176 @@
+(footprint "J_Wurth_WR-TBL_691406510002B"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Series 4065B - Screwless Push In 5.08mm pitch - Horizontal cable entry - THT, body 11.56x14.4x13.5mm, https://www.we-online.com/en/components/products/datasheet/691406510002B?ki")
+	(tags "THT Horizontal")
+	(property "Reference" "REF**"
+		(at 3.4 -4.03 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4440eace-3a26-4ccb-907f-97e3a0514a43")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "J_Wurth_WR-TBL_691406510002B"
+		(at 3.4 13.37 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a3e869fb-f3dd-44ce-b0e1-e77fbe424723")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "9e4a9734-ec73-4a77-9110-38a4214dedd5")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2627f31e-d7db-40ee-9c25-a4c6c8bd43ad")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.55 -3.115)
+		(end 0.55 -3.115)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "77d1cda4-ba3e-4cec-b3ed-648e298a948c")
+	)
+	(fp_rect
+		(start -2.49 -2.64)
+		(end 9.29 11.98)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "72d5e619-b2da-473e-be15-262795b43c7d")
+	)
+	(fp_rect
+		(start -2.88 -3.03)
+		(end 9.68 12.37)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "86d19955-2ba0-4a00-bf47-aa2bfcb660c7")
+	)
+	(fp_line
+		(start -0.55 -2.53)
+		(end 0 -1.53)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "8a7b8a21-0366-4e64-835b-85dc943e9491")
+	)
+	(fp_line
+		(start 0.55 -2.53)
+		(end 0 -1.53)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "a62a5cdb-d0c6-4a48-b9b6-9e179fe0cc66")
+	)
+	(fp_rect
+		(start -2.38 -2.53)
+		(end 9.18 11.87)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "79087004-988d-4fa6-b57f-9c2ab523bf3d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 3.4 4.67 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d3136be9-6a9a-4af5-9d3d-54001fba417d")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.075)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a82459b1-9640-43b0-90ad-f529e4602c11")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 0)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6800746b-bcf7-4c7d-9e3e-8fcf5e635209")
+	)
+	(pad "A1" thru_hole circle
+		(at 0 8.2)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "221d8457-a819-45b2-ba85-24fa84550625")
+	)
+	(pad "A2" thru_hole circle
+		(at 5.08 8.2)
+		(size 1.65 1.65)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5373f138-132b-4069-8ab4-a4d8744d9db1")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/Libraries/Part_3D_models/691406510002B (rev1).stp"
+		(offset
+			(xyz 2.7 2.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 90)
+		)
+	)
+)

@@ -1,0 +1,355 @@
+Detected gerber layers: F.Cu,B.Cu,F.Mask,B.Mask,F.Paste,B.Paste,F.SilkS,B.SilkS,Edge.Cuts
+→ Exporting schematic PDF
+Plotted to '.kicad-build-temp/KINK-box_schematic.pdf'.
+Done.
+→ Exporting PCB PDF
+Plotted to '.kicad-build-temp/KINK-box_pcb.pdf'.
+Done.
+→ Exporting top render
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.477 s
+Rendering: 9 %
+Rendering: 19 %
+Rendering: 29 %
+Rendering: 34 %
+Rendering: 42 %
+Rendering: 49 %
+Rendering: 59 %
+Rendering: 70 %
+Rendering: 80 %
+Rendering: 89 %
+Rendering: 98 %
+Rendering: 100 %
+Rendering: Post processing shader
+Rendering time 4.774 s
+Successfully created 3D render image
+→ Exporting bottom render
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.462 s
+Rendering: 9 %
+Rendering: 19 %
+Rendering: 27 %
+Rendering: 36 %
+Rendering: 43 %
+Rendering: 50 %
+Rendering: 59 %
+Rendering: 69 %
+Rendering: 78 %
+Rendering: 87 %
+Rendering: 96 %
+Rendering: 100 %
+Rendering: Post processing shader
+Rendering time 4.843 s
+Successfully created 3D render image
+→ Exporting isometric render
+Loading…
+Build board outline
+
+Create layers
+Create tracks and vias
+Create zones
+Build Tech layers
+Build Tech layer 11
+Build Tech layer 9
+Build Tech layer 15
+Build Tech layer 13
+Build Tech layer 7
+Build Tech layer 5
+Build Tech layer 3
+Build Tech layer 1
+Build Tech layer 17
+Build Tech layer 19
+Build Tech layer 21
+Build Tech layer 23
+Build Tech layer 39
+Build Tech layer 41
+Build Tech layer 43
+Build Tech layer 45
+Build Tech layer 47
+Build Tech layer 49
+Build Tech layer 51
+Build Tech layer 53
+Build Tech layer 55
+Build Tech layer 57
+Build Tech layer 59
+Build Tech layer 61
+Build Tech layer 63
+Build Tech layer 65
+Build Tech layer 67
+Build Tech layer 69
+Build Tech layer 71
+Build Tech layer 73
+Build Tech layer 75
+Build Tech layer 77
+Build Tech layer 79
+Build Tech layer 81
+Build Tech layer 83
+Build Tech layer 85
+Build Tech layer 87
+Build Tech layer 89
+Build Tech layer 91
+Build Tech layer 93
+Build Tech layer 95
+Build Tech layer 97
+Build Tech layer 99
+Build Tech layer 101
+Build Tech layer 103
+Build Tech layer 105
+Build Tech layer 107
+Build Tech layer 109
+Build Tech layer 111
+Build Tech layer 113
+Build Tech layer 115
+Build Tech layer 117
+Build Tech layer 119
+Build Tech layer 121
+Build Tech layer 123
+Build Tech layer 125
+Build Tech layer 127
+Simplifying copper layer polygons
+Simplify holes contours
+Build BVH for holes and vias
+Load Raytracing: board
+Load Raytracing: layers
+Loading 3D models...
+Reload time 0.478 s
+Rendering: 7 %
+Rendering: 13 %
+Rendering: 20 %
+Rendering: 26 %
+Rendering: 33 %
+Rendering: 42 %
+Rendering: 52 %
+Rendering: 64 %
+Rendering: 77 %
+Rendering: 87 %
+Rendering: 93 %
+Rendering: 100 %
+Rendering: Post processing shader
+Rendering time 5.041 s
+Successfully created 3D render image
+→ Exporting drill files
+Created file '.kicad-build-temp/drill/KINK-box.drl'
+Created file '.kicad-build-temp/drill/KINK-box-drl_map.pdf'.
+Done.
+→ Exporting STEP model
+STEP file '.kicad-build-temp/KINK-box_board.step' created.
+
+Export time 4.904 s
+→ Exporting placement CSV
+Wrote position data to '.kicad-build-temp/KINK-box_placement.csv'.
+→ Exporting BOM CSV
+Wrote bill of materials to '.kicad-build-temp/KINK-box_bom.csv'.
+→ Generating Interactive HTML BOM
+→ Running InteractiveHtmlBom generate_interactive_bom...
+13:20:41: Debug: Adding duplicate image handler for 'PNG file'
+13:20:41: Debug: Adding duplicate image handler for 'JPEG file'
+13:20:41: Debug: Adding duplicate image handler for 'TIFF file'
+13:20:41: Debug: Adding duplicate image handler for 'GIF file'
+13:20:41: Debug: Adding duplicate image handler for 'PNM file'
+13:20:41: Debug: Adding duplicate image handler for 'PCX file'
+13:20:41: Debug: Adding duplicate image handler for 'IFF file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows icon file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows cursor file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows animated cursor file'
+13:20:41: Debug: Adding duplicate image handler for 'TGA file'
+13:20:41: Debug: Adding duplicate image handler for 'XPM file'
+13:20:41: Debug: Adding duplicate image handler for 'PNG file'
+13:20:41: Debug: Adding duplicate image handler for 'JPEG file'
+13:20:41: Debug: Adding duplicate image handler for 'TIFF file'
+13:20:41: Debug: Adding duplicate image handler for 'GIF file'
+13:20:41: Debug: Adding duplicate image handler for 'PNM file'
+13:20:41: Debug: Adding duplicate image handler for 'PCX file'
+13:20:41: Debug: Adding duplicate image handler for 'IFF file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows icon file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows cursor file'
+13:20:41: Debug: Adding duplicate image handler for 'Windows animated cursor file'
+13:20:41: Debug: Adding duplicate image handler for 'TGA file'
+13:20:41: Debug: Adding duplicate image handler for 'XPM file'
+Loading ./KINK-box.kicad_pcb
+2026-07-12 13:20:41,542 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
+Loading ./KINK-box.kicad_pcb
+2026-07-12 13:20:41,542 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
+2026-07-12 13:20:41,799 INFO Compressing pcb data
+2026-07-12 13:20:41,799 INFO Compressing pcb data
+2026-07-12 13:20:42,439 INFO Dumping pcb data
+2026-07-12 13:20:42,439 INFO Dumping pcb data
+2026-07-12 13:20:42,449 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
+2026-07-12 13:20:42,449 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
+✓ Interactive BOM generated successfully
+→ Exporting Gerbers
+Plotted to '.kicad-build-temp/gerbers/KINK-box-F_Cu.gtl'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-B_Cu.gbl'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-F_Paste.gtp'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-B_Paste.gbp'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-F_Silkscreen.gto'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-B_Silkscreen.gbo'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-F_Mask.gts'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-B_Mask.gbs'.
+Plotted to '.kicad-build-temp/gerbers/KINK-box-Edge_Cuts.gm1'.
+→ Exporting Drill Files (JLCPCB-compatible Excellon)
+Created file '.kicad-build-temp/gerbers/KINK-box.drl'
+Done.
+→ Removing Gerber Job file (if present)
+→ Zipping Gerbers and Drill Files
+→ Writing report.txt
+→ Moving files to final output directory
+
+✓ All artifacts generated in: kicad-artifacts
+✓ Build log: kicad-artifacts/build.log
+kicad-artifacts:
+build.log
+drill
+ibom.html
+KINK-box_board.step
+KINK-box_bom.csv
+KINK-box_gerbers.zip
+KINK-box_pcb.pdf
+KINK-box_placement.csv
+KINK-box_render-bottom.png
+KINK-box_render-iso.png
+KINK-box_render-top.png
+KINK-box_schematic.pdf
+report.txt
+
+kicad-artifacts/drill:
+KINK-box_drill-map.pdf
+KINK-box.drl
