@@ -42,6 +42,7 @@ Designator,Val,Package,"Mid X","Mid Y",Rotation,Layer
 "C208","10uF","C_1210_3225Metric",147.000000,-135.400000,90.000000,top
 "FL1","744238701","L_Wurth_WE-CMDC-7060",102.000000,-128.500000,90.000000,top
 "FL2","744238701","L_Wurth_WE-CMDC-7060",112.000000,-128.500000,90.000000,top
+"H1","MountingHole_Pad","ESP-solderhole",66.200000,-119.775000,0.000000,top
 "H103","MountingHole","MountingHole_3.2mm_M3",54.000000,-146.000000,0.000000,top
 "H104","MountingHole","MountingHole_3.2mm_M3",54.000000,-94.000000,0.000000,top
 "H105","MountingHole","MountingHole_3.2mm_M3",146.000000,-94.000000,0.000000,top
