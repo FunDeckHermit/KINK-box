@@ -76,21 +76,21 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.471 s
+Reload time 0.477 s
 Rendering: 9 %
-Rendering: 20 %
-Rendering: 29 %
-Rendering: 35 %
-Rendering: 43 %
-Rendering: 50 %
-Rendering: 61 %
-Rendering: 72 %
-Rendering: 82 %
-Rendering: 90 %
-Rendering: 99 %
+Rendering: 19 %
+Rendering: 28 %
+Rendering: 34 %
+Rendering: 41 %
+Rendering: 48 %
+Rendering: 58 %
+Rendering: 69 %
+Rendering: 79 %
+Rendering: 88 %
+Rendering: 96 %
 Rendering: 100 %
 Rendering: Post processing shader
-Rendering time 4.714 s
+Rendering time 4.845 s
 Successfully created 3D render image
 → Exporting bottom render
 Loading…
@@ -163,12 +163,12 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.481 s
+Reload time 0.467 s
 Rendering: 9 %
-Rendering: 19 %
+Rendering: 18 %
 Rendering: 26 %
 Rendering: 34 %
-Rendering: 42 %
+Rendering: 41 %
 Rendering: 48 %
 Rendering: 55 %
 Rendering: 65 %
@@ -177,7 +177,7 @@ Rendering: 84 %
 Rendering: 92 %
 Rendering: 100 %
 Rendering: Post processing shader
-Rendering time 5.015 s
+Rendering time 5.004 s
 Successfully created 3D render image
 → Exporting isometric render
 Loading…
@@ -250,21 +250,21 @@ Build BVH for holes and vias
 Load Raytracing: board
 Load Raytracing: layers
 Loading 3D models...
-Reload time 0.465 s
+Reload time 0.477 s
 Rendering: 7 %
 Rendering: 14 %
 Rendering: 20 %
-Rendering: 25 %
+Rendering: 24 %
 Rendering: 31 %
-Rendering: 41 %
-Rendering: 52 %
+Rendering: 40 %
+Rendering: 51 %
 Rendering: 64 %
-Rendering: 77 %
-Rendering: 88 %
+Rendering: 76 %
+Rendering: 87 %
 Rendering: 93 %
 Rendering: 100 %
 Rendering: Post processing shader
-Rendering time 5.053 s
+Rendering time 5.042 s
 Successfully created 3D render image
 → Exporting drill files
 Created file '.kicad-build-temp/drill/KINK-box.drl'
@@ -273,47 +273,47 @@ Done.
 → Exporting STEP model
 STEP file '.kicad-build-temp/KINK-box_board.step' created.
 
-Export time 5.119 s
+Export time 5.085 s
 → Exporting placement CSV
 Wrote position data to '.kicad-build-temp/KINK-box_placement.csv'.
 → Exporting BOM CSV
 Wrote bill of materials to '.kicad-build-temp/KINK-box_bom.csv'.
 → Generating Interactive HTML BOM
 → Running InteractiveHtmlBom generate_interactive_bom...
-17:07:06: Debug: Adding duplicate image handler for 'PNG file'
-17:07:06: Debug: Adding duplicate image handler for 'JPEG file'
-17:07:06: Debug: Adding duplicate image handler for 'TIFF file'
-17:07:06: Debug: Adding duplicate image handler for 'GIF file'
-17:07:06: Debug: Adding duplicate image handler for 'PNM file'
-17:07:06: Debug: Adding duplicate image handler for 'PCX file'
-17:07:06: Debug: Adding duplicate image handler for 'IFF file'
-17:07:06: Debug: Adding duplicate image handler for 'PNG file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows icon file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows cursor file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows animated cursor file'
-17:07:06: Debug: Adding duplicate image handler for 'JPEG file'
-17:07:06: Debug: Adding duplicate image handler for 'TIFF file'
-17:07:06: Debug: Adding duplicate image handler for 'GIF file'
-17:07:06: Debug: Adding duplicate image handler for 'PNM file'
-17:07:06: Debug: Adding duplicate image handler for 'PCX file'
-17:07:06: Debug: Adding duplicate image handler for 'IFF file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows icon file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows cursor file'
-17:07:06: Debug: Adding duplicate image handler for 'Windows animated cursor file'
-17:07:06: Debug: Adding duplicate image handler for 'TGA file'
-17:07:06: Debug: Adding duplicate image handler for 'TGA file'
-17:07:06: Debug: Adding duplicate image handler for 'XPM file'
-17:07:06: Debug: Adding duplicate image handler for 'XPM file'
+19:26:18: Debug: Adding duplicate image handler for 'PNG file'
+19:26:18: Debug: Adding duplicate image handler for 'JPEG file'
+19:26:18: Debug: Adding duplicate image handler for 'TIFF file'
+19:26:18: Debug: Adding duplicate image handler for 'GIF file'
+19:26:18: Debug: Adding duplicate image handler for 'PNM file'
+19:26:18: Debug: Adding duplicate image handler for 'PCX file'
+19:26:18: Debug: Adding duplicate image handler for 'IFF file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows icon file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows cursor file'
+19:26:18: Debug: Adding duplicate image handler for 'PNG file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows animated cursor file'
+19:26:18: Debug: Adding duplicate image handler for 'TGA file'
+19:26:18: Debug: Adding duplicate image handler for 'XPM file'
+19:26:18: Debug: Adding duplicate image handler for 'JPEG file'
+19:26:18: Debug: Adding duplicate image handler for 'TIFF file'
+19:26:18: Debug: Adding duplicate image handler for 'GIF file'
+19:26:18: Debug: Adding duplicate image handler for 'PNM file'
+19:26:18: Debug: Adding duplicate image handler for 'PCX file'
+19:26:18: Debug: Adding duplicate image handler for 'IFF file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows icon file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows cursor file'
+19:26:18: Debug: Adding duplicate image handler for 'Windows animated cursor file'
+19:26:18: Debug: Adding duplicate image handler for 'TGA file'
+19:26:18: Debug: Adding duplicate image handler for 'XPM file'
 Loading ./KINK-box.kicad_pcb
-2026-07-12 17:07:06,771 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
+2026-07-13 19:26:18,547 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
 Loading ./KINK-box.kicad_pcb
-2026-07-12 17:07:06,771 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
-2026-07-12 17:07:07,030 INFO Compressing pcb data
-2026-07-12 17:07:07,030 INFO Compressing pcb data
-2026-07-12 17:07:07,637 INFO Dumping pcb data
-2026-07-12 17:07:07,637 INFO Dumping pcb data
-2026-07-12 17:07:07,647 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
-2026-07-12 17:07:07,647 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
+2026-07-13 19:26:18,547 WARNING Assuming extra data file to be the pcb file since --extra-data-file was not specified.
+2026-07-13 19:26:18,849 INFO Compressing pcb data
+2026-07-13 19:26:18,849 INFO Compressing pcb data
+2026-07-13 19:26:19,529 INFO Dumping pcb data
+2026-07-13 19:26:19,529 INFO Dumping pcb data
+2026-07-13 19:26:19,538 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
+2026-07-13 19:26:19,538 INFO Created file /home/roy/Documents/KiCad/KINK-box/.kicad-build-temp/ibom.html
 ✓ Interactive BOM generated successfully
 → Exporting Gerbers
 Plotted to '.kicad-build-temp/gerbers/KINK-box-F_Cu.gtl'.

@@ -7971,7 +7971,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 -2.54 0)
+				(at -22.86 -5.08 0)
 				(length 5.08)
 				(name "MODSEL"
 					(effects
@@ -8025,7 +8025,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 10.16 0)
+				(at -22.86 7.62 0)
 				(length 5.08)
 				(name "RINP"
 					(effects
@@ -8043,7 +8043,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 12.7 0)
+				(at -22.86 10.16 0)
 				(length 5.08)
 				(name "RINN"
 					(effects
@@ -8061,7 +8061,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 -7.62 0)
+				(at -22.86 -10.16 0)
 				(length 5.08)
 				(name "PLIMIT"
 					(effects
@@ -8079,7 +8079,7 @@
 				)
 			)
 			(pin power_in line
-				(at -22.86 -10.16 0)
+				(at 0 -27.94 90)
 				(length 5.08)
 				(name "GVDD"
 					(effects
@@ -8097,7 +8097,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 0 0)
+				(at -22.86 -2.54 0)
 				(length 5.08)
 				(name "GAIN/SLV"
 					(effects
@@ -8133,7 +8133,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 15.24 0)
+				(at -22.86 12.7 0)
 				(length 5.08)
 				(name "LINP"
 					(effects
@@ -8151,7 +8151,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 17.78 0)
+				(at -22.86 15.24 0)
 				(length 5.08)
 				(name "LINN"
 					(effects
@@ -8169,7 +8169,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 -5.08 0)
+				(at -22.86 -7.62 0)
 				(length 5.08)
 				(name "MUTE"
 					(effects
@@ -8187,7 +8187,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 5.08 0)
+				(at -22.86 2.54 0)
 				(length 5.08)
 				(name "AM2"
 					(effects
@@ -8205,7 +8205,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 7.62 0)
+				(at -22.86 5.08 0)
 				(length 5.08)
 				(name "AM1"
 					(effects
@@ -8223,7 +8223,7 @@
 				)
 			)
 			(pin input line
-				(at -22.86 2.54 0)
+				(at -22.86 0 0)
 				(length 5.08)
 				(name "AM0"
 					(effects
