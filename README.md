@@ -2,31 +2,33 @@
 
 ![KINK-box Isometric Render](kicad-artifacts/KINK-box_render-iso.png)
 
-A web-based radio player for KINK streams, powered by an ESP32-S3 microcontroller with integrated audio amplification.
+A compact USB-C-powered stereo audio player and amplifier powered by an ESP32-S3 microcontroller.
 
 ## Overview
 
-KINK-box is a dedicated streaming device combining an ESP32-S3 processor with audio amplification circuitry. Control it through a simple web interface to listen to KINK radio channels.
+KINK-box is a dedicated audio playback device with built-in amplification, WiFi connectivity, and a simple web interface. Stream audio to speakers or headphones with intuitive physical and web controls.
 
 ## Features
 
-- **ESP32-S3 Based**: Dual-core processor with integrated WiFi
-- **Web Interface**: Control playback and stream selection from your browser
-- **Built-in Amplifier**: TPA3118D2DAPR (Class D) direct speaker connection
-- **3.5mm Aux Output**: Line-level stereo jack for external amplifiers or headphones
-- **KINK Radio Optimized**: Seamless streaming of KINK stations
-- **12V USB Power Delivery**: Powers device via standard USB PD adapter
-- **RGB Button Controls**: Four RGB illuminated buttons for single-press KINK channel selection
-- **Menu Button Controls**: Adjust volume directly from physical buttons
+- **USB-C Power Delivery**: Powered by standard USB-C PD adapter (12V negotiated)
+- **WiFi Connectivity**: Built-in 2.4 GHz WiFi for streaming
+- **Web Interface**: Control playback and configuration from any browser
+- **Stereo Audio Output**: 
+  - Speaker terminals for direct loudspeaker connection
+  - 3.5mm line-level jack for headphones or external amplifiers
+- **Physical Controls**: 
+  - Four RGB-illuminated buttons for quick access
+  - Additional tactile button and navigation switch for volume and menu control
+- **Class-D Amplifier**: High-efficiency 30W stereo amplifier built-in
 
 ## Quick Start
 
 1. **Assembly**: Reference the component placement guide and [Bill of Materials](kicad-artifacts/KINK-box_bom.csv)
-2. **Power On**: Connect 12V USB Power Delivery adapter and connect to WiFi
-3. **Access**: Open `http://<device-ip>` in your browser
-4. **Channel Selection**: Press RGB buttons to switch between favorite KINK stations
-5. **Volume Control**: Use the RGB buttons or web interface to adjust volume
-6. **Enjoy**: Select KINK channels and stream
+2. **Power On**: Connect a USB-C Power Delivery adapter
+3. **Connect**: Join the device WiFi network
+4. **Access**: Open `http://<device-ip>` in your browser
+5. **Play**: Use the web interface or physical buttons to select and play audio
+6. **Volume**: Adjust using physical controls or the web interface
 
 ## Hardware Files
 
@@ -42,4 +44,4 @@ Apache License 2.0 - see [LICENSE](LICENSE) for details.
 
 ---
 
-**KINK-box** - Simple web radio for KINK streams.
+**KINK-box** - Simple stereo audio player with built-in amplification and WiFi.
