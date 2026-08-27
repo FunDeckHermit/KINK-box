@@ -1,0 +1,50 @@
+{
+  "build": {
+    "arduino": {
+      "ldscript": "esp32s3_out.ld",
+      "memory_type": "qio_opi"
+    },
+    "core": "esp32",
+    "extra_flags": [
+      "-DARDUINO_ESP32S3_DEV",
+      "-DBOARD_HAS_PSRAM",
+
+      "-DPIN_I2S_SCK=14",
+      "-DPIN_I2S_FS=15",
+      "-DPIN_I2S_SD=16",
+
+      "-DVOL_UP_PIN=4",
+      "-DVOL_DOWN_PIN=5",
+      "-DMENU_PIN=6"
+    ],
+    "f_cpu": "240000000L",
+    "f_flash": "80000000L",
+    "flash_mode": "qio",
+    "mcu": "esp32s3",
+    "variant": "esp32s3"
+  },
+
+  "debug": {
+    "default_tool": "esp-builtin",
+    "onboard_tools": [
+      "esp-builtin"
+    ],
+    "openocd_target": "esp32s3.cfg"
+  },
+
+  "frameworks": [
+    "arduino"
+  ],
+
+  "name": "KINK-box",
+  "upload": {
+    "flash_size": "8MB",
+    "maximum_ram_size": 327680,
+    "maximum_size": 8388608,
+    "require_upload_port": true,
+    "speed": 921600
+  },
+
+  "url": "https://www.espressif.com/",
+  "vendor": "KINK-box"
+}

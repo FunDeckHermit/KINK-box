@@ -9,89 +9,53 @@ const char* URLs[] = {
     "https://playerservices.streamtheworld.com/api/livestream-redirect/KINK_90S.mp3"
 };
 
-URLStreamBuffered url(WIFI_SSID, WIFI_PASS);
+URLStreamBuffered url0(WIFI_SSID, WIFI_PASS, 4096);
+URLStreamBuffered url1(WIFI_SSID, WIFI_PASS, 4096);
+
 I2SStream i2s;
 VolumeStream volume(i2s);
 MP3DecoderHelix mp3;
+
 EncodedAudioStream decoder(&volume, &mp3);
-StreamCopy copier(decoder, url);
 
-TaskHandle_t audioTask;
-int station = 0;
-float volumeLevel = 0.10;
+StreamCopy copier0(decoder, url0, 1024);
+StreamCopy copier1(decoder, url1, 1024);
 
-void audioTaskFunc(void*) {
-    url.begin(URLs[station], "audio/mpeg");
+volatile bool station = 0;
+volatile uint32_t lastButton = 0;
 
-    for (;;) {
-        if (ulTaskNotifyTake(pdTRUE, 0)) {
-            station = !station;
-            url.end();
-            url.begin(URLs[station], "audio/mpeg");
-        }
-        copier.copy();
-    }
-}
-
-void buttonTaskFunc(void*) {
-    bool last = HIGH;
-
-    for (;;) {
-        bool now = digitalRead(MENU_PIN);
-
-        if (last && !now) {
-            xTaskNotifyGive(audioTask);
-            vTaskDelay(pdMS_TO_TICKS(300));
-        }
-
-        last = now;
-        vTaskDelay(pdMS_TO_TICKS(20));
-    }
-}
-
-void updateVolume() {
-    static uint32_t lastChange, pressedAt;
-    int dir = !digitalRead(VOL_UP_PIN) ? 1 :
-              !digitalRead(VOL_DOWN_PIN) ? -1 : 0;
-
-    if (!dir) {
-        pressedAt = 0;
-        return;
-    }
-
+void IRAM_ATTR menuISR() {
     uint32_t now = millis();
 
-    if (!pressedAt) {
-        pressedAt = now;
-        lastChange = now - 100;
-    }
-
-    if (now - lastChange >= (now - pressedAt > 500 ? 100 : 0)) {
-        volumeLevel = constrain(volumeLevel + dir * 0.01, 0.0f, 1.0f);
-        volume.setVolume(volumeLevel);
-        lastChange = now;
+    if (now - lastButton > 200) {
+        station = !station;
+        lastButton = now;
     }
 }
 
+
 void setup() {
+    pinMode(MENU_PIN, INPUT_PULLUP);
+    attachInterrupt(MENU_PIN, menuISR, FALLING);
+
     auto cfg = i2s.defaultConfig(TX_MODE);
-    cfg.pin_bck = PIN_I2S_SCK;
-    cfg.pin_ws = PIN_I2S_FS;
+    cfg.pin_bck  = PIN_I2S_SCK;
+    cfg.pin_ws   = PIN_I2S_FS;
     cfg.pin_data = PIN_I2S_SD;
 
-    pinMode(VOL_UP_PIN, INPUT_PULLUP);
-    pinMode(VOL_DOWN_PIN, INPUT_PULLUP);
-    pinMode(MENU_PIN, INPUT_PULLUP);
-
     i2s.begin(cfg);
-    volume.setVolume(volumeLevel);
+
+    volume.setVolume(0.20);
+
     decoder.begin();
 
-    xTaskCreate(audioTaskFunc, "Audio", 4096, nullptr, 2, &audioTask);
-    xTaskCreate(buttonTaskFunc, "Button", 2048, nullptr, 1, nullptr);
+    url0.begin(URLs[0], "audio/mpeg");
+    url1.begin(URLs[1], "audio/mpeg");
 }
 
 void loop() {
-    updateVolume();
-    vTaskDelay(pdMS_TO_TICKS(10));
+    if (station)
+        copier1.copy();
+    else
+        copier0.copy();
 }
