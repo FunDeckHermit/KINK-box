@@ -4,11 +4,12 @@
 #include "AudioTools/Communication/HTTP/URLStream.h"
 #include "AudioTools/AudioCodecs/CodecMP3Helix.h"
 
-// Reference global variables owned by main.cpp
+// Reference global variables managed inside main.cpp
 extern volatile int station_idx;
 extern int active_playing_idx;
-extern audio_tools::MP3DecoderHelix mp3;
-extern audio_tools::VolumeStream volume; // Intercept volume stream to hide switch noise
+extern audio_tools::EncodedAudioStream decoder; 
+extern audio_tools::VolumeStream volume; 
+extern TaskHandle_t pumpTaskHandle; // Use task handles for real suspension control
 
 typedef struct RadioStation {
     const char* name;
@@ -18,11 +19,11 @@ typedef struct RadioStation {
     audio_tools::StreamCopy* copierObj;
     int myIdx;
 
-    void init(int idx, size_t bufferSize, audio_tools::EncodedAudioStream* decoder) {
+    void init(int idx, size_t bufferSize, audio_tools::EncodedAudioStream* targetDecoder) {
         myIdx = idx;
         streamObj = new audio_tools::URLStream();
         slidingBuffer = new audio_tools::RingBufferStream(bufferSize);
-        copierObj = new audio_tools::StreamCopy(*decoder, *slidingBuffer, 1024);
+        copierObj = new audio_tools::StreamCopy(*targetDecoder, *slidingBuffer, 1024);
     }
 
     void pump() {
@@ -31,40 +32,47 @@ typedef struct RadioStation {
         if (availableBytes > 0) {
             uint8_t chunkBuffer[256]; 
             size_t bytesToRead = (availableBytes > 256) ? 256 : availableBytes;
+            
             int bytesRead = streamObj->readBytes(chunkBuffer, bytesToRead);
-            if (bytesRead > 0) slidingBuffer->write(chunkBuffer, bytesRead);
+            if (bytesRead > 0) {
+                slidingBuffer->write(chunkBuffer, bytesRead);
+            }
         }
     }
 
     void play() {
         if (slidingBuffer == nullptr || copierObj == nullptr) return;
 
-        // SEAMLESS CUTOVER TRANSITION ENGINE
+        // BULLETPROOF FREE-RTOS TASK SUSPENSION SWITCH ENGINE
         if (active_playing_idx != myIdx) {
+            
+            // 1. Physically freeze Core 0's pump thread at the RTOS scheduler level
+            if (pumpTaskHandle != NULL) {
+                vTaskSuspend(pumpTaskHandle);
+            }
+            
             active_playing_idx = myIdx;
             
-            // 1. Mute audio output instantly to mask stale frame residue
+            // 2. Mute audio output instantly to mask initialization changes
             float targetVolume = volume.volume();
             volume.setVolume(0.0);
             
-            // 2. Clear out the old buffer index alignment entirely
+            // 3. Reset buffer pointer offsets back to zero alignment
             slidingBuffer->begin(); 
             
-            // 3. Purge the Helix bitstream decoding history cache
-            mp3.end();
-            mp3.begin();
+            // 4. Safely reset decoder structures while Core 0 is completely frozen
+            decoder.end();
+            decoder.begin();
             
             Serial.printf("Switched clean decoding target to: %s\n", name);
             
-            // 4. Give Core 0 a brief 60ms window to buffer fresh, aligned frames
-            delay(60); 
+            // 5. Resume the network pump task safely
+            if (pumpTaskHandle != NULL) {
+                vTaskResume(pumpTaskHandle);
+            }
             
-            // 5. Force copy operations to clear the active StreamCopy cache blocks
-            copierObj->copy();
-            copierObj->copy();
-            copierObj->copy();
-            
-            // 6. Restore original volume level for clean audio delivery
+            // 6. Give Core 0 a small window to inject a clean frame stream before restoring sound
+            delay(50); 
             volume.setVolume(targetVolume);
         }
         

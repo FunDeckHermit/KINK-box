@@ -49,7 +49,8 @@ EncodedAudioStream decoder(&volume, &mp3);
 volatile int station_idx = 0;
 int active_playing_idx = -1; 
 volatile uint32_t lastButton = 0;
-volatile bool background_loading_done = false;
+TaskHandle_t pumpTaskHandle = NULL; 
+
 
 void IRAM_ATTR menuISR() {
     uint32_t now = millis();
@@ -59,37 +60,29 @@ void IRAM_ATTR menuISR() {
     }
 }
 
-// FreeRTOS Task: High-frequency look-ahead data pump pinning
-void networkPumpTask(void *pvParameters) {
+void networkPumpTask(void *p) {
     while (true) {
-        if (WiFi.status() == WL_CONNECTED) {
+        if (WiFi.status() == WL_CONNECTED) { 
             for (int i = 0; i < STATIONS_COUNT; i++) {
-                // Only pump channels that have been fully initialized
                 if (stations[i].streamObj != nullptr && stations[i].slidingBuffer != nullptr) {
                     stations[i].pump();
                 }
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(1)); // Short yield to allow core housekeeping routines
+        vTaskDelay(pdMS_TO_TICKS(1)); 
     }
 }
 
-// FreeRTOS Task: Delays the loading of background channels to protect boot performance
+
 void delayedLoaderTask(void *p) {
-    // Wait 2 full seconds for Station 0 to build its audio stream stability on Core 1
     vTaskDelay(pdMS_TO_TICKS(2000));
-    
     Serial.println("[LOADER] Initializing secondary radio channels in background...");
     for (int i = 1; i < STATIONS_COUNT; i++) {
         stations[i].init(i, SLIDING_WINDOW_SIZE, &decoder);
         stations[i].streamObj->begin(stations[i].url, "audio/mpeg");
-        Serial.printf("[LOADER] Online Sliding Buffer for: %s\n", stations[i].name);
-        vTaskDelay(pdMS_TO_TICKS(500)); // Stagger the handshake processes cleanly
+        vTaskDelay(pdMS_TO_TICKS(500)); 
     }
-    
-    background_loading_done = true;
-    Serial.println("[LOADER] All background channels ready!");
-    vTaskDelete(NULL); // Terminate this setup thread automatically
+    vTaskDelete(NULL); 
 }
 
 void setup() {
@@ -104,16 +97,13 @@ void setup() {
 
     WiFi.begin(WIFI_SSID, WIFI_PASS);
     while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
+    Serial.println("\nNetwork Ready!");
 
-    // DELAY LOADING STRATEGY: Initialize ONLY Station 0 right now
     stations[0].init(0, SLIDING_WINDOW_SIZE, &decoder);
     stations[0].streamObj->begin(stations[0].url, "audio/mpeg");
     Serial.printf("[INIT] Immediate Online Buffer for Main Station: %s\n", stations[0].name);
 
-    // Turn on the background network manager on Core 0
-    xTaskCreatePinnedToCore(networkPumpTask, "NetPump", 4096, NULL, 1, NULL, 0);
-
-    // Fire off the background loader task on Core 0 to handle channels 1, 2, and 3 downstream
+    xTaskCreatePinnedToCore(networkPumpTask, "NetPump", 4096, NULL, 1, &pumpTaskHandle, 0);
     xTaskCreatePinnedToCore(delayedLoaderTask, "DelayedLoad", 16384, NULL, 1, NULL, 0);
 }
 
