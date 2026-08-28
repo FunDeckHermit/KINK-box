@@ -8,6 +8,7 @@
 extern volatile int station_idx;
 extern int active_playing_idx;
 extern audio_tools::MP3DecoderHelix mp3;
+extern audio_tools::VolumeStream volume; // Intercept volume stream to hide switch noise
 
 typedef struct RadioStation {
     const char* name;
@@ -28,7 +29,7 @@ typedef struct RadioStation {
         if (streamObj == nullptr || slidingBuffer == nullptr) return;
         int availableBytes = streamObj->available();
         if (availableBytes > 0) {
-            uint8_t chunkBuffer[256]; // Correctly typed chunk buffer block
+            uint8_t chunkBuffer[256]; 
             size_t bytesToRead = (availableBytes > 256) ? 256 : availableBytes;
             int bytesRead = streamObj->readBytes(chunkBuffer, bytesToRead);
             if (bytesRead > 0) slidingBuffer->write(chunkBuffer, bytesRead);
@@ -36,27 +37,38 @@ typedef struct RadioStation {
     }
 
     void play() {
-        // ENCAPSULATED ANTI-FAST-FORWARD TRANSITION ENGINE
+        if (slidingBuffer == nullptr || copierObj == nullptr) return;
+
+        // SEAMLESS CUTOVER TRANSITION ENGINE
         if (active_playing_idx != myIdx) {
             active_playing_idx = myIdx;
             
-            // FIX: Re-calling .begin() instantly resets the ring pointers to 0 
-            // without running a heavy CPU while-loop, eliminating I2S starvation.
-            if (slidingBuffer != nullptr) {
-                slidingBuffer->begin(); 
-            }
+            // 1. Mute audio output instantly to mask stale frame residue
+            float targetVolume = volume.volume();
+            volume.setVolume(0.0);
             
-            // Clear out historical bit fragments inside the Helix codec parser
+            // 2. Clear out the old buffer index alignment entirely
+            slidingBuffer->begin(); 
+            
+            // 3. Purge the Helix bitstream decoding history cache
             mp3.end();
             mp3.begin();
             
             Serial.printf("Switched clean decoding target to: %s\n", name);
             
-            // Give Core 0 a small 50ms window to inject fresh, aligned audio data
-            delay(50); 
+            // 4. Give Core 0 a brief 60ms window to buffer fresh, aligned frames
+            delay(60); 
+            
+            // 5. Force copy operations to clear the active StreamCopy cache blocks
+            copierObj->copy();
+            copierObj->copy();
+            copierObj->copy();
+            
+            // 6. Restore original volume level for clean audio delivery
+            volume.setVolume(targetVolume);
         }
         
-        if (copierObj != nullptr) copierObj->copy(); 
+        copierObj->copy(); 
     }
 
     RadioStation* operator->() { return this; }
