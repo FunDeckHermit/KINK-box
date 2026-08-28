@@ -1,61 +1,25 @@
+#include <Arduino.h>
+#include <WiFi.h>
+#include "esp_heap_caps.h"
 #include "AudioTools.h"
 #include "AudioTools/Communication/HTTP/URLStream.h"
 #include "AudioTools/AudioCodecs/CodecMP3Helix.h"
 #include "Station.h" 
 
 using namespace audio_tools;
+const size_t SLIDING_WINDOW_SIZE = 1024 * 32; 
 
-#include <Arduino.h>
-#include <WiFi.h>
-#include "esp_heap_caps.h"
-
-// ============================================================================
-// THE PSRAM FORCE HACK: Redirecting Network Core Heap Demands to Octal PSRAM
-// ============================================================================
+// Memory wraps redirecting TLS, tasks, and sockets to Octal PSRAM
 extern "C" {
-    // Standard memory hooks
-    void *__real_malloc(size_t size);
-    void *__wrap_malloc(size_t size) {
-        if (size > 48) {
-            void *ptr = heap_caps_malloc(size, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
-            if (ptr) return ptr;
+    void *__real_malloc(size_t s); void *__wrap_malloc(size_t s) { if (s > 48) { void *p = heap_caps_malloc(s, MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT); if (p) return p; } return heap_caps_malloc(s, MALLOC_CAP_INTERNAL|MALLOC_CAP_8BIT); }
+    void *__real_calloc(size_t n, size_t s); void *__wrap_calloc(size_t n, size_t s) { size_t t = n * s; if (t > 48) { void *p = heap_caps_malloc(t, MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT); if (p) { memset(p, 0, t); return p; } } void *p = heap_caps_malloc(t, MALLOC_CAP_INTERNAL|MALLOC_CAP_8BIT); if (p) memset(p, 0, t); return p; }
+    void *mbedtls_calloc(size_t n, size_t s) { return __wrap_calloc(n, s); } void mbedtls_free(void *p) { heap_caps_free(p); }
+    BaseType_t __real_xTaskCreate(TaskFunction_t c, const char *n, uint32_t d, void *p, UBaseType_t pr, TaskHandle_t *t);
+    BaseType_t __wrap_xTaskCreate(TaskFunction_t c, const char *n, uint32_t d, void *p, UBaseType_t pr, TaskHandle_t *t) {
+        if (n != NULL && (strstr(n, "Audio") != NULL || strstr(n, "Buffer") != NULL || strstr(n, "URL") != NULL || strstr(n, "Pump") != NULL)) {
+            return xTaskCreatePinnedToCoreWithCaps(c, n, d, p, pr, t, 0, MALLOC_CAP_SPIRAM);
         }
-        return heap_caps_malloc(size, MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
-    }
-
-    void *__real_calloc(size_t n, size_t size);
-    void *__wrap_calloc(size_t n, size_t size) {
-        size_t total = n * size;
-        if (total > 48) {
-            void *ptr = heap_caps_malloc(total, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
-            if (ptr) { memset(ptr, 0, total); return ptr; }
-        }
-        void *ptr = heap_caps_malloc(total, MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
-        if (ptr) memset(ptr, 0, total);
-        return ptr;
-    }
-
-    void *mbedtls_calloc(size_t n, size_t size) { return __wrap_calloc(n, size); }
-    void mbedtls_free(void *ptr) { heap_caps_free(ptr); }
-
-    // FREERTOS TASK HIJACK HOOK
-    // Intercepts Phil Schatzmann's internal task generation calls
-    BaseType_t __real_xTaskCreate(TaskFunction_t pvTaskCode, const char * const pcName, const uint32_t usStackDepth, void * const pvParameters, UBaseType_t uxPriority, TaskHandle_t * const pxCreatedTask);
-    BaseType_t __wrap_xTaskCreate(TaskFunction_t pvTaskCode, const char * const pcName, const uint32_t usStackDepth, void * const pvParameters, UBaseType_t uxPriority, TaskHandle_t * const pxCreatedTask) {
-        
-        // Check if this is an audio library stream buffering task
-        if (pcName != NULL && (strstr(pcName, "Audio") != NULL || strstr(pcName, "Buffer") != NULL || strstr(pcName, "URL") != NULL)) {
-            // Force Task Stack and TCB completely into external Octal PSRAM
-            return xTaskCreatePinnedToCoreWithCaps(
-                pvTaskCode, pcName, usStackDepth, pvParameters, 
-                uxPriority, pxCreatedTask, 
-                0, // Assign background processing tasks safely to Core 0
-                MALLOC_CAP_SPIRAM
-            );
-        }
-        
-        // Fall back to standard creation for core system interrupts/WiFi peripherals
-        return __real_xTaskCreate(pvTaskCode, pcName, usStackDepth, pvParameters, uxPriority, pxCreatedTask);
+        return __real_xTaskCreate(c, n, d, p, pr, t);
     }
 }
 
@@ -77,47 +41,56 @@ RadioStation stations[] = {
 };
 const int STATIONS_COUNT = sizeof(stations) / sizeof(stations[0]);
 
-// 2. ONLY ONE buffer task wrapper shared among all streams to save SRAM
-URLStreamBuffered shared_buffer(4096); 
-
 I2SStream i2s;
 VolumeStream volume(i2s);
 MP3DecoderHelix mp3;
 EncodedAudioStream decoder(&volume, &mp3);
-StreamCopy copier(decoder, shared_buffer, 1024);
 
 volatile int station_idx = 0;
+int active_playing_idx = -1;
 volatile uint32_t lastButton = 0;
 
 void IRAM_ATTR menuISR() {
-    if (millis() - lastButton > 200) {
+    uint32_t now = millis();
+    if (now - lastButton > 250) {
         station_idx = (station_idx + 1) % STATIONS_COUNT;
-        lastButton = millis();
+        lastButton = now;
     }
 }
 
+// FreeRTOS Task: Dedicated Network Pump on Core 0
+// It checks all 4 connections in sequence, processes ready data chunks, 
+// and overflows older elements to stay in sync with the live server stream.
+void networkPumpTask(void *pvParameters) {
+    while (true) {
+        if (WiFi.status() == WL_CONNECTED) {
+            for (int i = 0; i < STATIONS_COUNT; i++) {
+                stations[i].pump();
+            }
+        }
+        vTaskDelay(pdMS_TO_TICKS(1)); // Short yield to allow core housekeeping routines
+    }
+}
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(115200); delay(1000);
     AudioLogger::instance().begin(Serial, AudioLogger::Warning); 
-    pinMode(MENU_PIN, INPUT_PULLUP);
-    attachInterrupt(MENU_PIN, menuISR, FALLING);
+    pinMode(MENU_PIN, INPUT_PULLUP); attachInterrupt(MENU_PIN, menuISR, FALLING);
 
     auto cfg = i2s.defaultConfig(TX_MODE);
     cfg.pin_bck = PIN_I2S_SCK; cfg.pin_ws = PIN_I2S_FS; cfg.pin_data = PIN_I2S_SD;
-    i2s.begin(cfg);
-    volume.setVolume(0.20);
-    decoder.begin();
+    cfg.buffer_size = 512; cfg.buffer_count = 4;
+    i2s.begin(cfg); volume.setVolume(0.20); decoder.begin();
 
-    PRINT_RAM("BEFORE URL BEGIN");
+    WiFi.begin(WIFI_SSID, WIFI_PASS);
+    while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
+
     for (int i = 0; i < STATIONS_COUNT; i++) {
-        stations[i].streamObj = new URLStreamBuffered(WIFI_SSID, WIFI_PASS, 4096);
-        stations[i].copierObj = new StreamCopy(decoder, *stations[i].streamObj, 1024);
-        
+        stations[i].init(i, SLIDING_WINDOW_SIZE, &decoder);
         stations[i].streamObj->begin(stations[i].url, "audio/mpeg");
-        Serial.printf("Initialized [%s] -> %s\n", stations[i].name, stations[i].url);
+        delay(250); 
     }
-    PRINT_RAM("AFTER URL BEGIN");
+    xTaskCreatePinnedToCore(networkPumpTask, "NetPump", 4096, NULL, 1, NULL, 0);
 }
 
 void loop() {
